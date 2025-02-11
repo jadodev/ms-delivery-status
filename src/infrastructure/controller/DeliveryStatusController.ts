@@ -4,12 +4,121 @@ import { QueryDeliveryStatusService } from '../../application/services/QueryDeli
 import { UpdateDeliveryStatusService } from '../../application/services/UpdateDeliveryStatusService';
 
 /**
- * Crea y configura un router Express para el microservicio DeliveryStatus.
- *
- * Se definen tres endpoints:
- *  - POST /delivery-status: para crear un nuevo DeliveryStatus.
- *  - GET /delivery-status: para consultar un DeliveryStatus por shipmentId o stateCode.
- *  - PATCH /delivery-status: para actualizar un DeliveryStatus existente.
+ * @swagger
+ * tags:
+ *   name: DeliveryStatus
+ *   description: Endpoints para gestionar el Delivery Status
+ */
+
+/**
+ * @swagger
+ * /delivery-status/health:
+ *   get:
+ *     summary: Verifica el estado del servicio de Delivery Status.
+ *     tags: [DeliveryStatus]
+ *     responses:
+ *       200:
+ *         description: El servicio está corriendo.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Delivery Status Service is running
+ */
+
+/**
+ * @swagger
+ * /delivery-status:
+ *   post:
+ *     summary: Crea un nuevo DeliveryStatus.
+ *     tags: [DeliveryStatus]
+ *     requestBody:
+ *       description: Objeto con los datos para crear un DeliveryStatus.
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               shipmentId:
+ *                 type: string
+ *               stateCode:
+ *                 type: string
+ *             example:
+ *               shipmentId: "SHIP001"
+ *               stateCode: "DELIVERED"
+ *     responses:
+ *       201:
+ *         description: DeliveryStatus creado correctamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       400:
+ *         description: Error al crear el DeliveryStatus.
+ */
+
+/**
+ * @swagger
+ * /delivery-status:
+ *   get:
+ *     summary: Consulta un DeliveryStatus por shipmentId o stateCode.
+ *     tags: [DeliveryStatus]
+ *     parameters:
+ *       - in: query
+ *         name: shipmentId
+ *         schema:
+ *           type: string
+ *         description: Identificador del shipment.
+ *       - in: query
+ *         name: stateCode
+ *         schema:
+ *           type: string
+ *         description: Código de estado.
+ *     responses:
+ *       200:
+ *         description: DeliveryStatus obtenido correctamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       400:
+ *         description: Error en la consulta, se debe enviar al menos shipmentId o stateCode.
+ */
+
+/**
+ * @swagger
+ * /delivery-status:
+ *   patch:
+ *     summary: Actualiza un DeliveryStatus existente.
+ *     tags: [DeliveryStatus]
+ *     requestBody:
+ *       description: Datos para actualizar el DeliveryStatus.
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               shipmentId:
+ *                 type: string
+ *               stateCode:
+ *                 type: string
+ *             example:
+ *               shipmentId: "SHIP001"
+ *               stateCode: "IN_TRANSIT"
+ *     responses:
+ *       200:
+ *         description: DeliveryStatus actualizado correctamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       400:
+ *         description: Error al actualizar el DeliveryStatus.
  */
 export function createDeliveryStatusController(
   createService: CreateDeliveryStatusService,
