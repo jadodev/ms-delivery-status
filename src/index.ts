@@ -15,6 +15,7 @@ import { CreateDeliveryStatusService } from './application/services/CreateDelive
 import { QueryDeliveryStatusService } from './application/services/QueryDeliveryStatusService';
 import { UpdateDeliveryStatusService } from './application/services/UpdateDeliveryStatusService';
 import { createDeliveryStatusController } from './infrastructure/controller//DeliveryStatusController';
+import { setupSwagger } from './infrastructure/swagger/swaggerConfig';
 
 async function main() {
   try {
@@ -63,6 +64,7 @@ async function main() {
       updateDeliveryStatusService
     );
     app.use("/api", deliveryStatusRouter);
+    setupSwagger(app)
 
     const port = process.env.PORT || 4000;
     app.listen(port, () => {
