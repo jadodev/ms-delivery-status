@@ -18,6 +18,7 @@ const CreateDeliveryStatusService_1 = require("./application/services/CreateDeli
 const QueryDeliveryStatusService_1 = require("./application/services/QueryDeliveryStatusService");
 const UpdateDeliveryStatusService_1 = require("./application/services/UpdateDeliveryStatusService");
 const DeliveryStatusController_1 = require("./infrastructure/controller//DeliveryStatusController");
+const swaggerConfig_1 = require("./infrastructure/swagger/swaggerConfig");
 async function main() {
     try {
         await (0, messageBroker_1.connectKafka)();
@@ -41,6 +42,7 @@ async function main() {
         app.use(express_1.default.json());
         const deliveryStatusRouter = (0, DeliveryStatusController_1.createDeliveryStatusController)(createDeliveryStatusService, queryDeliveryStatusService, updateDeliveryStatusService);
         app.use("/api", deliveryStatusRouter);
+        (0, swaggerConfig_1.setupSwagger)(app);
         const port = process.env.PORT || 4000;
         app.listen(port, () => {
             console.log(`Server is running on port ${port}`);
