@@ -31,7 +31,7 @@ export class DeliveryStatus {
   }
 
   /**
-   * Factory method para crear una nueva instancia que por defecto esta en "espera".
+   * Factory method para crear una nueva instancia que por defecto esta en "espera"..
    */
   public static create(
     shipmentId: string,

@@ -7,7 +7,7 @@
  */
 export interface ICreateDeliveryStatusUseCase {
     /**
-     * Ejecuta el caso de uso para crear un DeliveryStatus.
+     * Ejecuta el caso de uso para crear un DeliveryStatus..
      */
     execute(dto: any): Promise<any>;
   }

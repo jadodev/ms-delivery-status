@@ -23,7 +23,7 @@ export interface IDeliveryStatusRepository {
    */
   findByShipmentId(shipmentId: string): Promise<DeliveryStatus | null>;
 
-  /**
+  /**.
    * Actualiza una instancia existente de DeliveryStatus en la persistencia.
    */
   update(deliveryStatus: DeliveryStatus): Promise<void>;

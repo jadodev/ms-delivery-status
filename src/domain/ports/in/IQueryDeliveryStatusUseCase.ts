@@ -7,7 +7,7 @@
  */
 export interface IQueryDeliveryStatusUseCase {
     /**
-     * Ejecuta el caso de uso para consultar un DeliveryStatus.
+     * Ejecuta el caso de uso para consultar un DeliveryStatus..
      */
     execute(dto: any): Promise<any>;
   }

@@ -29,7 +29,7 @@ export class DeliveryStatusDomainService {
   }
 
   /**
-   * Actualiza el DeliveryStatus existente con nuevos valores.
+   * Actualiza el DeliveryStatus existente con nuevos valores..
    */
   public updateDeliveryStatus(
     deliveryStatus: DeliveryStatus,

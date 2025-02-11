@@ -7,7 +7,7 @@
  */
 export interface IUpdateDeliveryStatusUseCase {
     /**
-     * Ejecuta el caso de uso para actualizar un DeliveryStatus.
+     * Ejecuta el caso de uso para actualizar un DeliveryStatus..
      */
     execute(dto: any): Promise<any>;
   }
